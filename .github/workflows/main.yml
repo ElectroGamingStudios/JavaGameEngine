@@ -23,5 +23,5 @@ jobs:
       - name: Compile
         run: |
           cd "source code/src"
-          javac io.github.electronicsboy.GameEngine.Engine
+          javac io/github/electronicsboy/GameEngine/Engine.java
           
