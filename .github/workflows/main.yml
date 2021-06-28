@@ -24,4 +24,4 @@ jobs:
         run: |
           cd "source code/src"
           javac io/github/electronicsboy/GameEngine/Engine.java
-          
+          jar cf conpiled.jar *.class
