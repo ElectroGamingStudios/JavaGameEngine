@@ -29,4 +29,4 @@ The fourth offical release of the game engine!
 2: Added a Binary Reader and Writer<br>
 3: Added Crash Report support
 
-# NOTE: Demos and games are not cross compatible with versions as the code in the libray is changed a little between versions. Please check the demo or the game version.
+## NOTE: Demos and games are not cross compatible with different engine versions. Please check the engine version before submiting an issue.
