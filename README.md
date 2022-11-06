@@ -13,7 +13,7 @@ The second offical release of the game engine!
 1: Can't render multiple buttons.
 
 ##### Additions
-1: now, the JFrame can me access from the engine class
+1: now, the JFrame can be access from the engine class
 
 ### Version 1.2
 The third offical release of the game engine!
