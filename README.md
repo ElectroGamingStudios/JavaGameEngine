@@ -29,4 +29,15 @@ The fourth offical release of the game engine!
 2: Added a Binary Reader and Writer<br>
 3: Added Crash Report support
 
+### Version 1.4
+The fifth offical release of the game engine!
+#### Changes
+##### New Features
+1: Added baseplate for GUI Menues!
+##### API Changes
+1: Changed the way Buttons are rendered
+##### Bug fixes
+1: Fixed tick function not being called
+2: Fixed issue on linux
+
 ## NOTE: Demos and games are not cross compatible with different engine versions. Please check the engine version before submiting an issue.
