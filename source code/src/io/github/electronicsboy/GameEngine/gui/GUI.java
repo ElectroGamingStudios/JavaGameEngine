@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import io.github.electronicsboy.GameEngine.Engine;
 import io.github.electronicsboy.GameEngine.Util.Util;
 
 public class GUI {
@@ -28,24 +27,5 @@ public class GUI {
 	public void postRender(Graphics g, Color backgroundColor) {
 		g.setColor(backgroundColor);
 		g.fillRect(0, 0, Util.WIDTH, Util.HEIGHT);
-	}
-	
-	public void postRenderButton(Graphics g, Color onHoverButtonColor, Color defaultButtonColor, Button button, ButtonStyle buttonStyle, int tx, int ty, String title, Color tc, Font font) {
-		if(button != null) {
-			if(Engine.getMouse().isMouseOver(button.getX(), button.getY(), button.getWidth(), button.getHeight())){
-				button.postRender(g, onHoverButtonColor, buttonStyle, tx, ty, title, tc, font);
-			}else {
-				button.postRender(g, defaultButtonColor, buttonStyle, tx, ty, title, tc, font);
-			}
-		}
-	}
-	public void postRenderButton(Graphics g, Color onHoverButtonColor, Color defaultButtonColor, Button button, ButtonStyle buttonStyle) {
-		if(button != null) {
-			if(Engine.getMouse().isMouseOver(button.getX(), button.getY(), button.getWidth(), button.getHeight())){
-				button.postRender(g, onHoverButtonColor, buttonStyle);
-			}else {
-				button.postRender(g, defaultButtonColor, buttonStyle);
-			}
-		}
 	}
 }

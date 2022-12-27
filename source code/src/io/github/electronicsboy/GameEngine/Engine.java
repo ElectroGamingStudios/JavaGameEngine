@@ -1,11 +1,18 @@
 package io.github.electronicsboy.GameEngine;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.util.ArrayList;
+import java.util.List;
 
+import io.github.electronicsboy.GameEngine.Util.StateSystem;
+import io.github.electronicsboy.GameEngine.Util.Util;
 import io.github.electronicsboy.GameEngine.crash.CrashReport;
+import io.github.electronicsboy.GameEngine.gui.GUIWindow;
 import io.github.electronicsboy.GameEngine.gui.HUDPostTick;
 import io.github.electronicsboy.GameEngine.input.Keyboard;
 import io.github.electronicsboy.GameEngine.input.Mouse;
@@ -36,8 +43,15 @@ public abstract class Engine extends Canvas implements Target, Runnable, HUDPost
 	
 	protected int frameLimit;
 	
+	private List<GUIWindow> guiWindows = new ArrayList<GUIWindow>();
+	
+	public StateSystem sys = new StateSystem();
+	
 	public void tick() {
 		target.postTick();
+		for(GUIWindow window : guiWindows) if(window != null)
+			if(window.getRunnableState().equals(sys.getState()))
+				window.tick();
 	}
 	
 	@Override
@@ -52,6 +66,7 @@ public abstract class Engine extends Canvas implements Target, Runnable, HUDPost
 		int frames = 0;
 		long now = System.nanoTime();
 		while(running) {
+			now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
 			while(delta >= 1) {
@@ -67,7 +82,7 @@ public abstract class Engine extends Canvas implements Target, Runnable, HUDPost
 			if(System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
 				System.out.println("FPS: " + frames);
-				window.getFrame().setTitle(title + " | FPS: " + frames);
+				window.getFrame().setTitle(title + " | FPS: " + frames + " | TPS: " + frameLimit);
 				frames = 0;
 			}
 		}
@@ -113,10 +128,23 @@ public abstract class Engine extends Canvas implements Target, Runnable, HUDPost
 
 		Graphics g = bs.getDrawGraphics();
 		
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, Util.WIDTH, Util.HEIGHT);
+		
+		for(GUIWindow window : guiWindows) if(window != null)
+			if(window.getRunnableState().equals(sys.getState()))
+				window.render(g);
+		
 		target.postRender(g);
 		
 		g.dispose();
 		bs.show();
+		Toolkit.getDefaultToolkit().sync();
+	}
+	
+	protected void addWindow(GUIWindow window) {
+		guiWindows.add(window);
+		window.init();
 	}
 	
 	public static Keyboard getKeyboard() {

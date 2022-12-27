@@ -32,4 +32,9 @@ public class Handler {
 		for(int i = 0; i < object.length; i++)
 			this.object.remove(object[i]);
 	}
+	
+	public void clearAll() {
+		for(int i = 0; i < object.size(); i++)
+			this.object.remove(object.get(i));
+	}
 }
