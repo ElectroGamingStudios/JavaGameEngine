@@ -37,7 +37,11 @@ The fifth offical release of the game engine!
 ##### API Changes
 1: Changed the way Buttons are rendered
 ##### Bug fixes
-1: Fixed tick function not being called
+1: Fixed tick function not being called<br>
 2: Fixed issue on linux
+
+### Version 1.5
+The sixth offical release of the game engine!
+---- DATA NOT FOUND ----
 
 ## NOTE: Demos and games are not cross compatible with different engine versions. Please check the engine version before submiting an issue.
