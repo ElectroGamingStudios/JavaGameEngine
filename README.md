@@ -44,4 +44,11 @@ The fifth offical release of the game engine!
 The sixth offical release of the game engine!
 ---- DATA NOT FOUND ----
 
+### Version 2.0.0-TEST-SNAPSHORT
+#### Changes
+##### New Features
+1: Switched to maven
+##### API Changes
+1: Changed Package Name
+
 ## NOTE: Demos and games are not cross compatible with different engine versions. Please check the engine version before submiting an issue.
